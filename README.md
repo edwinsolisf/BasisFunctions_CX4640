@@ -62,8 +62,10 @@ where $\vec{u}$, $\vec{v}$ and $\vec{0}$ are elements in $V$ and $a,b$, and 1 ar
 These are the axioms, i.e. the definition or _statement assumed true without proof_, of vector spaces
 Intuitively, for _geometrical_ vectors, this can be shown visually to be consistent to how vectors should behave.
 
-![Multiple forms of vectors](vector_spaces.png)
-*Geometric, Matrix, and Analytical representations of vector spaces[^21]*
+<p align="center"><img src="./vector_spaces.png" width=70% align="center"></img></p>
+<figcaption align="center"><b>Geometric, Matrix, and Analytical representations of vector spaces</b></figcaption>
+
+[^21]
 
 Now, if we translate this concepts to functions, these properties still apply:
 $(f+g)(x) = f(x) + g(x)$, $1f(x)=f(x)$, $a(f(x) + g(x)) = af(x) + ag(x)$, ... So, in essence, we can think of function and vectors as one and the same thing.
@@ -76,18 +78,18 @@ A function is a continous throughout is domain with infinitely many inputs, so a
 
 The inner product of two real functions $f$ and $g$ in the vector space $V$ over the interval $[a,b] is defined as:
 $$
-    \braket{f,g} = \int^b_af(x)\,g(x)\;\text{d}{x}
+    \braket{f,g} = \int^b_af(x)\,g(x) \text{d}{x}
 $$
 
 More generally, functions can be complex and inner products can have specific weights depending on the topology[^2]:
 
-$$\braket{f,g}_w = \int^b_af^*(x)\,g(x)\,w(x)\;\text{d}{x}$$
+$$\braket{f,g}_w = \int^b_af^*(x)\,g(x)\,w(x) \text{d}{x}$$
 
 where $f^*$ is the complex conjugate of $f$ and $w$ is the weigth of this particular inner product. Vector spaces that contain the inner product space are said to be __Inner Product Spaces__.
 
 With this definition of inner products, it is also possible to define the norm of the function for the given interval. The __Euclidean Norm__, also called $L^2$ in the literature of Hilbert Spaces, for a function $f$ is defined as:
 
-$$\big|\big|f\big|\big|_2 = \sqrt{\braket{f,f}_2} = \sqrt{\int^b_a\big|f(x)\big|^2\;\text{d}{x}}$$
+$$\big|\big|f\big|\big|_2 = \sqrt{\braket{f,f}_2} = \sqrt{\int^b_a\big|f(x)\big|^2 \text{d}{x}}$$
 
 A function is said to be __normalized__ if its Euclidean Norm is equal to 1.
 
@@ -98,9 +100,9 @@ If there is a set of $n$ basis vectors $e_i$ in vector space $V$, any vector $v$
 
 $$\vec{v} = \sum^n_{i=1}v_i\vec{e_i}$$
 
-The same principle applies to functions. A set function $S=\{\,f_i\;|\;1\leq i\leq n\}$ can represent any function in their span as a linear combination of those basis functions:
+The same principle applies to functions. A set function $S=\{\,f_i | 1\leq i\leq n\}$ can represent any function in their span as a linear combination of those basis functions:
 
-$$g(x) = \sum^n_{i=1}c_i\;f_i(x)$$
+$$g(x) = \sum^n_{i=1}c_i f_i(x)$$
 
 A simple example of this fact can be shown by a set of two basis functions: $f_0(x) = 1$ and $f_1(x)=x$. From the previous equation, it can be seen that any function $g(x)$ in the span of $\{f_0,f_1\}$ can be written as:
 $$g(x) = c_0 + c_1 x$$
@@ -128,8 +130,9 @@ $$g(x) = e^x = \sum^\infty_{n=0}\frac{1}{n!}x^n$$
 
 where $c_n = \frac{1}{n!}$
 
-![Graph of the monomial basis functions](monomials.png)
-*Graph of the monomial basis defined in the range [0,1]*
+<p align="center"><img src="./monomials.png" width=70% align="center"></img></p>
+<figcaption align="center"><b>Graph of the monomial basis defined in the range</b></figcaption>
+
 
 ## Orthogonal Functions
 
@@ -139,7 +142,7 @@ $$\braket{\vec{u}, \vec{v}} = 0$$
 
 Again, this translates to functions seamlessly. Two function are orthogonal on the interval $[a,b]$ if[^13]:
 
-$$\braket{f_i\,,\,f_j}_w = \int^b_a\,f_i(x)\;f_j(x)w(x)\;\text{d}x = 0$$
+$$\braket{f_i\,,\,f_j}_w = \int^b_a\,f_i(x) f_j(x)w(x) \text{d}x = 0$$
 
 If all the functions in the basis are orthogonal to each other, then the set of function has an orthogonal basis. 
 
@@ -153,11 +156,11 @@ $$\braket{f_i\,,\,f_j} = \delta_{ij}$$
 
 The usefulness of an orthogonal/orthonormal basis comes from the ability to decompose any function spanned by the basis easily. If $g(x)$ is a function in the span of the $f_i$ basis, then it can be written as:
 
-$$g(x) = \sum c_i\;f_i(x)$$
+$$g(x) = \sum c_i f_i(x)$$
 
 Computing the inner product with a basis function $f_j$:
 
-$$\braket{f_j, g} = \sum{\braket{f_j,c_i\;f_i}} = \sum c_i \delta_{ij} = c_j$$
+$$\braket{f_j, g} = \sum{\braket{f_j,c_i f_i}} = \sum c_i \delta_{ij} = c_j$$
 
 Hence, the inner product works as a __Projector__ operator by obtaining the coefficient associated to each basis function. Another way of seeing this property is that by having an orthonormal basis, each time an inner product is done with a basis function, the amount of information obtained (the value of the coefficients) is maximized.
 
@@ -171,7 +174,7 @@ The main kind of orthogonal functions used are __Orthogonal Polynomials__. Ortho
 
 The Jacobi Polynomials were introduced by Carl Gustav Jacobi, known for the Jacobian operation on matrices. These polynomials are defined by the orthogonality relationship:
 
-$$\int^1_{-1} p_m(x)\;p_n(x)\;(1-x)^\alpha\;(1+x)^\beta\;\text{d}x = \frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1}\frac{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}{\Gamma(n+\alpha+\beta+1)n!}\delta_{mn}$$
+$$\int^1_{-1} p_m(x) p_n(x) (1-x)^\alpha (1+x)^\beta \text{d}x = \frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1}\frac{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}{\Gamma(n+\alpha+\beta+1)n!}\delta_{mn}$$
 
 with $\alpha,\beta>-1$. By using the Rodrigues Formula, a more explicit definition of the Jacobi Polynomials is given by the equation:
 
@@ -179,8 +182,10 @@ $$P_n(x;\alpha;\beta) = \frac{(-1)^n}{n!2^n}(1-x)^{-\alpha}(1+x)^{-\beta}\frac{\
 
 Some of the applications of such complex polynomials are in the use spectral methods [^16]
 
-![Graph of Jacobian Polynomials in the complex plane](jacobi.png)
-*Plot of the Jacobi Polynomial with $n=10$, $\alpha,\beta=2$[^30]*
+<p align="center"><img src="./jacobi.png" width=70% align="center"></img></p>
+<figcaption align="center"><b>Plot of the Jacobi Polynomial with n=10</b></figcaption>
+
+[^30]
 
 These are the first two generalized Jacobi Polynomials:
 
@@ -190,7 +195,7 @@ $$\begin{split} P_0(x;\alpha;\beta) &= 1 \\ P_1(x;\alpha;\beta) &= (\alpha + 1) 
 
 Legendre Polynomials are the special case of Jacobi Polynomials when $\alpha,\beta = 0$. Therefore, they have an easier representation. The orthogonality relation is:
 
-$$\int^1_{-1}P_m(x)\,P_n(x)\; \text{d}x = \frac{2}{2n+1}\delta_{mn}$$
+$$\int^1_{-1}P_m(x)\,P_n(x)  \text{d}x = \frac{2}{2n+1}\delta_{mn}$$
 
 or in the case of its generating function:
 
@@ -200,8 +205,11 @@ Due to their straightforward definition, lists of the sequence of the polynomial
 
 $$\begin{split}P_0(x) &= 1 \\ P_1(x) &= x \\ P_2(x) &= \frac{1}{2}(3x^2-1) \\ P_3(x) &= \frac{1}{2}(5x^3-3x) \\ P_4(x) &= \frac{1}{8}(35x^4-30x^2+3) \\ P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x)\end{split}$$
 
-![Graph of the first six Legendre Polynomials](legendre.png)
-*Graph of the first six Legendre Polynomials[^23]*
+
+<p align="center"><img src="./legendre.png" width=80% align="center"></img></p>
+<figcaption align="center"><b>Graph of the first six Legendre Polynomials</b></figcaption>
+
+[^23]
 
 The ease of computation facilitates the use of these polynomials all throughout many areas. They are used in Electrodynamics and Mechanics expanding potentials depending with the $1/r$ to provide a general solution to the Laplace Equation. For example, in the azimuthally symmetric separable potential, the general solution to the Laplace Equation is given by: 
 
@@ -211,8 +219,10 @@ where $P_n$ are the Legendre Polynomials. These also appear when solving the Sch
 
 $$Y_{mn}(\theta,\phi) = P^m_n(\cos\theta)\cos m\phi$$
 
-![Electron orbitals of the atom](harmonics.png)
-*Orbitals' shape predicted by the spherical harmonics (Legendre Polynomial)[^20]*
+<p align="center"><img src="./harmonics.png" width=70% align="center"></img></p>
+<figcaption align="center"><b>Orbitals' shape predicted by the spherical harmonics (Legendre Polynomial)</b></figcaption>
+
+[^20]
 
 They are used in the Gauss-Legendre Quadrature Rules for approximating definite integrals. As polynomials are easy to integrate, the weights and points for this quadrature rule are really easy to obtain compared to more general polynomials like the Jacobi Polynomials. Many of this have been computed and stored in reference tables for use when needed. While Legendre Polynomials are a solid choice for Quadratures in the majority of cases, specially for integrating polynomials, its property of computing exact integrals for polynomials will not transfer for any other type function. While inexpensive, there might be methods with better accuracy for more complex functions. [^18]
 
@@ -228,7 +238,7 @@ $$T_n(\cos\theta)=\cos n\theta$$
 
 and satisfy the inner product:
 
-$$\int_{-1}^1\;f(x)\;g(x)\;\frac{\text{d}x}{\sqrt{1 - x^2}}=\begin{cases}0 & n\neq m \\ \pi & n = m = 0 \\ \frac{\pi}{2} & n = m \neq 0 \end{cases}$$
+$$\int_{-1}^1 f(x) g(x) \frac{\text{d}x}{\sqrt{1 - x^2}}=\begin{cases}0 & n\neq m \\ \pi & n = m = 0 \\ \frac{\pi}{2} & n = m \neq 0 \end{cases}$$
 
 Meanwhile, the second kind occur from the special case $\alpha,\beta=\frac{1}{2}$, so they are defined by the polynomials that satisfy:
 
@@ -236,13 +246,15 @@ $$U_n(\cos\theta)\sin\theta=\sin((n+1)\theta)$$
 
 and have an inner product:
 
-$$\int_{-1}^1\;f(x)\;g(x)\;{\sqrt{1 - x^2}}\text{d}x=\begin{cases}0 & n\neq m \\ \frac{\pi}{2} & n = m\end{cases}$$
+$$\int_{-1}^1 f(x) g(x) {\sqrt{1 - x^2}}\text{d}x=\begin{cases}0 & n\neq m \\ \frac{\pi}{2} & n = m\end{cases}$$
 
 
 Chebysehv Polynomials of the first kind are really useful in approximation and polynomial interpolation. The Chebyshev nodes are roots of the Chebyshev polynomials of the first kind. This roots are useful because they are equally spaced around the circumference of the semicircle, which avoids accumulation of points in the edges and minimizes the Runge's phenomenon during interpolation. By dividing the polynomials by their leading coefficient, one obtains the monic Chebyshev Polynomials. These monic Chebyshev Polynomials are used to minimize the Lagrange interpolation error [^32]
 
-![First five Chebyshev Polynomials of the first kind](chebyshev.png)
-*Graph of the five Chebyshev Polynomials of the first kind[^33]*
+<p align="center"><img src="./chebyshev.png" style="background-color:white;" width=70% align="center"></img></p>
+<figcaption align="center"><b>Graph of the five Chebyshev Polynomials of the first kind</b></figcaption>
+
+[^33]
 
 From the definition of the Chebyshev polynomials, it ressembles a cosine Fourier series. By executing a change of variables, one can obtain similar properties that Fourier series possess. By having an infinite set of Chebyshev polynomials, the series can converge to any piecewise smooth function just like a Fourier series would. This properties make it apealing in Numerical Analysis for the spectral methods available for Fourier Series.[^34]
 
@@ -254,11 +266,11 @@ $$\begin{split} w_{1i} &= \frac{\pi}{n} \\ x_{1i} &= \cos\left(\frac{2i-1}{2n}\p
 
 This serve to approximate integrals of the form
 
-$$\int_{-1}^1\;f(x)\;\frac{\text{d}x}{\sqrt{1 - x^2}}$$
+$$\int_{-1}^1 f(x) \frac{\text{d}x}{\sqrt{1 - x^2}}$$
 
 and
 
-$$\int_{-1}^1\;f(x)\;{\sqrt{1 - x^2}}\;{\text{d}x}$$
+$$\int_{-1}^1 f(x) {\sqrt{1 - x^2}} {\text{d}x}$$
 
 for the first and second kind, respectively.
 
@@ -280,12 +292,14 @@ The first three generalized Laguerre Polynomials are:
 
 $$\begin{split}L_0^\alpha(x) &= 1\\ L_1^\alpha(x) &= -x+\alpha+1\\L_2^\alpha(x) &= \frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
 
-![Graph of first six Laguerre Polynomials](laguerre.png)
-*Graph of the first six Laguerre Polynomials[^24]*
+<p align="center"><img src="./laguerre.png" style="background-color:white;" width=70% align="center"></img></p>
+<figcaption align="center"><b>Graph of the first six Laguerre Polynomials</b></figcaption>
+
+[^24]
 
 For the Gauss-Laguerre quadrature, there exists weights for generalized Laguerre polynomials; however, the integrals must be of the form:
 
-$$\int_0^\infty\;x^\alpha\;e^{-x}\;\text{d}{x}$$
+$$\int_0^\infty x^\alpha e^{-x} \text{d}{x}$$
 
 allowing to evaluate such integrals for multiple ranges of $\alpha$. However any other types of functions, while doable, the approach is not always numerically stable.[^35]
 
@@ -301,12 +315,14 @@ From this, the first six Hermite polynomials are straight forward to obtain:
 
 $$\begin{split}H_0(x) &= 1 \\ H_1(x) &= 2x \\ H_2(x) &= 4x^2 - 2 \\ H_3(x) &= 8x^3 - 12x \\ H_4(x) &= 16x^4 - 48x^2 + 12 \\ H_5(x) &= 32x^5 - 160 x^3 + 120x \end{split}$$
 
-![Graph of the first six physicist's Hermite Polynomials](hermite.png)
-*Graph of the first six Physicist's Hermite Polynomials[^27]*
+<p align="center"><img src="./hermite.png" style="background-color:white;" width=70% align="center"></img></p>
+<figcaption align="center"><b>Graph of the first six Physicist's Hermite Polynomials</b></figcaption>
+
+[^27]
 
 For the normalization condition, these polynomials obey:
 
-$$\int^\infty_{-\infty}H_m(x)\;H_n(x)\;e^{-x^2}\;\text{d}x = \sqrt{\pi}\,2^nn!\delta_{mn}$$
+$$\int^\infty_{-\infty}H_m(x) H_n(x) e^{-x^2} \text{d}x = \sqrt{\pi}\,2^nn!\delta_{mn}$$
 
 
 The key characteristic of these polynomials is that thir inner product is defined on the whole real axis $\mathbb{R}$. Therefore, they are useful in Quadratures that require to estimate integrals with limits at infinity.
@@ -315,7 +331,7 @@ Some of the main uses of the Hermite Polynomials are in Quantum Mechanics in the
 
 With the Gauss-Hermite Quadrature, integrals of the gaussian type:
 
-$$\int^{\infty}_{-\infty}\;f(x)\;e^{-x^2}\text{d}{x}$$
+$$\int^{\infty}_{-\infty} f(x) e^{-x^2}\text{d}{x}$$
 
 can be approximated.
 
@@ -337,13 +353,15 @@ $$f(x) = \sum^\infty_{n=0}a_n\cos{2\pi n x} + b_n\sin {2\pi n x}$$
 
 The fact that the basis functions are periodic functions with integer-multiple of the frequency makes this set of functions orthogonal in the range $[-\pi, \pi]$. That is because of this integral:
 
-$$\int^\pi_{-\pi}\cos(mx)\;\cos(nx)\;\text{d}x = \int^\pi_{-\pi}\sin(mx)\;\sin(nx)\;\text{d}x = \pi \delta_{mn}$$
+$$\int^\pi_{-\pi}\cos(mx)   \cos(nx) \text{d}x = \int^\pi_{-\pi}\sin(mx) \sin(nx) \text{d}x = \pi \delta_{mn}$$
 
 The Fourier Series is useful in several areas: defining the Fourier Transform and Inverse Fourier Transform for Fourier Analysis, used in differential equations as a basis for general solutions like the Laplace Equation or the Heat Equation, animations, and eigenvalue problems.
 
 
-![Graph of sines and cosines forming an orthogonal set](fourier.gif)
-*Orthogonal set formed by sines and cosines[^36]*
+<p align="center"><img src="./fourier.gif" style="background-color:white;" width=70% align="center"></img></p>
+<figcaption align="center"><b>Orthogonal set formed by sines and cosines</b></figcaption>
+
+[^36]
 
 #### Rational Functions
 
