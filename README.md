@@ -62,7 +62,8 @@ where $\vec{u}$, $\vec{v}$ and $\vec{0}$ are elements in $V$ and $a,b$, and 1 ar
 These are the axioms, i.e. the definition or _statement assumed true without proof_, of vector spaces
 Intuitively, for _geometrical_ vectors, this can be shown visually to be consistent to how vectors should behave.
 
-![Multiple forms of vectors](vector_spaces.png)*Geometric, Matrix, and Analytical representations of vector spaces[^21]*
+![Multiple forms of vectors](vector_spaces.png)
+*Geometric, Matrix, and Analytical representations of vector spaces[^21]*
 
 Now, if we translate this concepts to functions, these properties still apply:
 $(f+g)(x) = f(x) + g(x)$, $1f(x)=f(x)$, $a(f(x) + g(x)) = af(x) + ag(x)$, ... So, in essence, we can think of function and vectors as one and the same thing.
@@ -127,6 +128,8 @@ $$g(x) = e^x = \sum^\infty_{n=0}\frac{1}{n!}x^n$$
 
 where $c_n = \frac{1}{n!}$
 
+![Graph of the monomial basis functions](monomials.png)
+*Graph of the monomial basis defined in the range [0,1]*
 
 ## Orthogonal Functions
 
@@ -142,7 +145,7 @@ If all the functions in the basis are orthogonal to each other, then the set of 
 
 When a functions in an orthogonal basis are normalized, the functions are known to be __orthonormal__ forming an __orthonormal basis__.For the management of orthonormal basis functions, it is useful to introduce the __Kronecker Delta__ function:
 
-$$\delta_{ij} = \large\begin{cases}1 & i = j\\0 & i\neq j\end{cases}$$
+$$\delta_{ij} = \large\begin{cases}1 & i = j \\ 0 & i\neq j\end{cases}$$
 
 so that the inner product of two orthonormal basis function $f_i$ and $f_j$ can be simplified to:
 
@@ -166,7 +169,7 @@ The main kind of orthogonal functions used are __Orthogonal Polynomials__. Ortho
 
 ### Jacobi Polynomials [^15]
 
-The Jacobi Polynomials are defined by the orthogonality relationship:
+The Jacobi Polynomials were introduced by Carl Gustav Jacobi, known for the Jacobian operation on matrices. These polynomials are defined by the orthogonality relationship:
 
 $$\int^1_{-1} p_m(x)\;p_n(x)\;(1-x)^\alpha\;(1+x)^\beta\;\text{d}x = \frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1}\frac{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}{\Gamma(n+\alpha+\beta+1)n!}\delta_{mn}$$
 
@@ -175,6 +178,13 @@ with $\alpha,\beta>-1$. By using the Rodrigues Formula, a more explicit definiti
 $$P_n(x;\alpha;\beta) = \frac{(-1)^n}{n!2^n}(1-x)^{-\alpha}(1+x)^{-\beta}\frac{\text{d}^n}{\text{d}x^n}\left[(1-x)^\alpha(1+x)^\beta(1-x^2)^n\right]$$
 
 Some of the applications of such complex polynomials are in the use spectral methods [^16]
+
+![Graph of Jacobian Polynomials in the complex plane](jacobi.png)
+*Plot of the Jacobi Polynomial with $n=10$, $\alpha,\beta=2$[^30]*
+
+These are the first two generalized Jacobi Polynomials:
+
+$$\begin{split} P_0(x;\alpha;\beta) &= 1 \\ P_1(x;\alpha;\beta) &= (\alpha + 1) + (\alpha +\beta +2)\frac{x-1}{2} \end{split}$$
 
 ### Legendre Polynomials 
 
@@ -188,9 +198,10 @@ $$P_n(x)=\frac{1}{2^nn!}\frac{\text{d}^n}{\text{d}x^n}(1-x^2)^n$$
 
 Due to their straightforward definition, lists of the sequence of the polynomials have been computed. The first six of them are:
 
-$$\begin{split}P_0(x) &= 1\\P_1(x) &= x\\P_2(x) &= \frac{1}{2}(3x^2-1)\\P_3(x) &= \frac{1}{2}(5x^3-3x)\\P_4(x) &= \frac{1}{8}(35x^4-30x^2+3)\\P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x)\end{split}$$
+$$\begin{split}P_0(x) &= 1 \\ P_1(x) &= x \\ P_2(x) &= \frac{1}{2}(3x^2-1) \\ P_3(x) &= \frac{1}{2}(5x^3-3x) \\ P_4(x) &= \frac{1}{8}(35x^4-30x^2+3) \\ P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x)\end{split}$$
 
-![Graph of the first six Legendre Polynomials](legendre.png)*Graph of the first six Legendre Polynomials[^23]*
+![Graph of the first six Legendre Polynomials](legendre.png)
+*Graph of the first six Legendre Polynomials[^23]*
 
 The ease of computation facilitates the use of these polynomials all throughout many areas. They are used in Electrodynamics and Mechanics expanding potentials depending with the $1/r$ to provide a general solution to the Laplace Equation. For example, in the azimuthally symmetric separable potential, the general solution to the Laplace Equation is given by: 
 
@@ -200,13 +211,62 @@ where $P_n$ are the Legendre Polynomials. These also appear when solving the Sch
 
 $$Y_{mn}(\theta,\phi) = P^m_n(\cos\theta)\cos m\phi$$
 
-![Electron orbitals of the atom](harmonics.png)*Orbitals' shape predicted by the spherical harmonics (Legendre Polynomial)[^20]*
+![Electron orbitals of the atom](harmonics.png)
+*Orbitals' shape predicted by the spherical harmonics (Legendre Polynomial)[^20]*
 
 They are used in the Gauss-Legendre Quadrature Rules for approximating definite integrals. As polynomials are easy to integrate, the weights and points for this quadrature rule are really easy to obtain compared to more general polynomials like the Jacobi Polynomials. Many of this have been computed and stored in reference tables for use when needed. While Legendre Polynomials are a solid choice for Quadratures in the majority of cases, specially for integrating polynomials, its property of computing exact integrals for polynomials will not transfer for any other type function. While inexpensive, there might be methods with better accuracy for more complex functions. [^18]
 
 Recently, they have also gained traction in their usage on Recurrent Neural Network Architectures. These neural networks orthogonalize the time history of the input data. The orthogonalization occurs with shifted Legendre Polynomials. Then these equations are ported into the memory of the neural network as matrices indexed at dsicrete moments in time. [^19]
 
+## Chebyshev Polynomials [^2]
+
+These polynomials were named after Patnufy Chevyshev in 1854.[^29] Two types of polynomials are named after him depending on the special weights used. These two weights and polynomials are just special cases for the more general Jacobi Polynomials.
+
+The Chebysehv Polynomials of the first kind are the Jacobi Polynomials for the special case of $\alpha,\beta=-\frac{1}{2}$. These are defined by the expression:
+
+$$T_n(\cos\theta)=\cos n\theta$$
+
+and satisfy the inner product:
+
+$$\int_{-1}^1\;f(x)\;g(x)\;\frac{\text{d}x}{\sqrt{1 - x^2}}=\begin{cases}0 & n\neq m \\ \pi & n = m = 0 \\ \frac{\pi}{2} & n = m \neq 0 \end{cases}$$
+
+Meanwhile, the second kind occur from the special case $\alpha,\beta=\frac{1}{2}$, so they are defined by the polynomials that satisfy:
+
+$$U_n(\cos\theta)\sin\theta=\sin((n+1)\theta)$$
+
+and have an inner product:
+
+$$\int_{-1}^1\;f(x)\;g(x)\;{\sqrt{1 - x^2}}\text{d}x=\begin{cases}0 & n\neq m \\ \frac{\pi}{2} & n = m\end{cases}$$
+
+
+Chebysehv Polynomials of the first kind are really useful in approximation and polynomial interpolation. The Chebyshev nodes are roots of the Chebyshev polynomials of the first kind. This roots are useful because they are equally spaced around the circumference of the semicircle, which avoids accumulation of points in the edges and minimizes the Runge's phenomenon during interpolation. By dividing the polynomials by their leading coefficient, one obtains the monic Chebyshev Polynomials. These monic Chebyshev Polynomials are used to minimize the Lagrange interpolation error [^32]
+
+![First five Chebyshev Polynomials of the first kind](chebyshev.png)
+*Graph of the five Chebyshev Polynomials of the first kind[^33]*
+
+From the definition of the Chebyshev polynomials, it ressembles a cosine Fourier series. By executing a change of variables, one can obtain similar properties that Fourier series possess. By having an infinite set of Chebyshev polynomials, the series can converge to any piecewise smooth function just like a Fourier series would. This properties make it apealing in Numerical Analysis for the spectral methods available for Fourier Series.[^34]
+
+There are other two kinds of Chebyshev Polynomials called the third and fourth kind, which are less well-known for the parameters $\alpha=-\beta=\pm\frac{1}{2}$.
+
+In the case of the first and second kind Chebyshev Polynomials, the Gauss-Chebyshev Quadrature rule possess exact expressions for the points and weights:[^36]
+
+$$\begin{split} w_{1i} &= \frac{\pi}{n} \\ x_{1i} &= \cos\left(\frac{2i-1}{2n}\pi \right) \\  w_{2i} &= \frac{\pi}{n+1} \sin^2 \left(\frac{i}{n+1}\pi\right) \\ x_{2i} &= \cos\left(\frac{i}{n+1}\pi\right)\end{split}$$
+
+This serve to approximate integrals of the form
+
+$$\int_{-1}^1\;f(x)\;\frac{\text{d}x}{\sqrt{1 - x^2}}$$
+
+and
+
+$$\int_{-1}^1\;f(x)\;{\sqrt{1 - x^2}}\;{\text{d}x}$$
+
+for the first and second kind, respectively.
+
+If the integration bound are not $[-1,1]$, a change of variables can be done to achieve the desired integral form.
+
 ### Laguerre Polynomials [^2]
+
+The Laguerre Polynomials were named after Edmond Laguerre since they are solutions of the Laguerre Differential Equation.
 
 Laguerre Polynomials are defined to have the weight: $w(x) = x^\alpha e^{-x}$ with $\alpha>-1$ and $x>0$. From the orthogonalization, the Laguerre polynomials can be written as the sequence:
 
@@ -214,32 +274,88 @@ $$L^\alpha_n(x)=\sum^n_{k=0}\frac{\Gamma(\alpha+n+1)}{\Gamma(\alpha+k+1)}\frac{(
 
 They satisfy the differential equation: 
 $$xy''+(\alpha-x+1)y'+ny=0$$
-where $n$ is a non-negative integer. This property is important as it permits it to be written as a _confluent hypergeometric function_, which are functions where the singularities are merged into one. Real world use cases for this were in the solution of the Schordinger Equation for the Couloumb Potential and Morse potential. [^22]
+where $n$ is a non-negative integer. This property is important as it permits it to be written as a _confluent hypergeometric function_, which are functions where the singularities are merged into one. Real world use cases for this were in the solution of the Schrodinger Equation for the Couloumb Potential and Morse potential. [^22]
 
 The first three generalized Laguerre Polynomials are: 
 
-$$\begin{split}L_0^\alpha(x)&=1\\L_1^\alpha(x)&=-x+\alpha+1\\L_2^\alpha(x)&=\frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
+$$\begin{split}L_0^\alpha(x) &= 1\\ L_1^\alpha(x) &= -x+\alpha+1\\L_2^\alpha(x) &= \frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
 
-![Graph of first six Laguerre Polynomials](laguerre.png)*Graph of the first six Laguerre Polynomials[^24]*
+![Graph of first six Laguerre Polynomials](laguerre.png)
+*Graph of the first six Laguerre Polynomials[^24]*
 
-### Hermite Polynomials
+For the Gauss-Laguerre quadrature, there exists weights for generalized Laguerre polynomials; however, the integrals must be of the form:
+
+$$\int_0^\infty\;x^\alpha\;e^{-x}\;\text{d}{x}$$
+
+allowing to evaluate such integrals for multiple ranges of $\alpha$. However any other types of functions, while doable, the approach is not always numerically stable.[^35]
+
+### Hermite Polynomials[^2]
+
+The Hermite Polynomials were initally introduced by Pierre-Simon in 1810[^26], but were named after their rediscovery by Charles Hermite.[^25][^28]
+
+For this set of orthogonal polynomials, the weight function $w(x)=e^{-x^2}$, a Gaussian. From the Rodrigues' formula, the physicist's hermite polynomials are given by the expression:
+
+$$H_n(x) = (-1)^ne^{x^2}\frac{\text{d}^n}{\text{d}x^n}e^{-x^2}$$
+
+From this, the first six Hermite polynomials are straight forward to obtain:
+
+$$\begin{split}H_0(x) &= 1 \\ H_1(x) &= 2x \\ H_2(x) &= 4x^2 - 2 \\ H_3(x) &= 8x^3 - 12x \\ H_4(x) &= 16x^4 - 48x^2 + 12 \\ H_5(x) &= 32x^5 - 160 x^3 + 120x \end{split}$$
+
+![Graph of the first six physicist's Hermite Polynomials](hermite.png)
+*Graph of the first six Physicist's Hermite Polynomials[^27]*
+
+For the normalization condition, these polynomials obey:
+
+$$\int^\infty_{-\infty}H_m(x)\;H_n(x)\;e^{-x^2}\;\text{d}x = \sqrt{\pi}\,2^nn!\delta_{mn}$$
 
 
+The key characteristic of these polynomials is that thir inner product is defined on the whole real axis $\mathbb{R}$. Therefore, they are useful in Quadratures that require to estimate integrals with limits at infinity.
+
+Some of the main uses of the Hermite Polynomials are in Quantum Mechanics in the radial eigenfunctions for the Schrodinger Equation of an atom and in the wavefunction of a simple harmonic oscillator[^22], they are also used in defining orthogonal sets of normal probability distributions through generalized Hermite Polynomials. Hermite functions are also a set of eigenfunctions of the continuous Fourier Transform. They appear in the description of Gaussian wavelets (particle wave-packets), in the heat equation, and statistics.
+
+With the Gauss-Hermite Quadrature, integrals of the gaussian type:
+
+$$\int^{\infty}_{-\infty}\;f(x)\;e^{-x^2}\text{d}{x}$$
+
+can be approximated.
 
 ### Other orthogonal functions
 
+All the functions touched upon previously are polynomial just polynomials which are orthogonal under a specific weight function. However, there are other sets of functions that are orthogonal, but not necessarily polynomials with their own unique features.
+
 #### Fourier Series[^6]
+
+A fourier series is a sequence of periodic functions that can be linearly combinated. For the most part, fourier series are always related to sinusoidal functions due to their inherent oscillartory behavior.
+
+The general expression for a complex Fourier series is:
+
+$$f(x) = \sum^\infty_{n=0}a_ie^{2\pi i nx}$$
+
+while for a real function:
+
+$$f(x) = \sum^\infty_{n=0}a_n\cos{2\pi n x} + b_n\sin {2\pi n x}$$
+
+The fact that the basis functions are periodic functions with integer-multiple of the frequency makes this set of functions orthogonal in the range $[-\pi, \pi]$. That is because of this integral:
+
+$$\int^\pi_{-\pi}\cos(mx)\;\cos(nx)\;\text{d}x = \int^\pi_{-\pi}\sin(mx)\;\sin(nx)\;\text{d}x = \pi \delta_{mn}$$
+
+The Fourier Series is useful in several areas: defining the Fourier Transform and Inverse Fourier Transform for Fourier Analysis, used in differential equations as a basis for general solutions like the Laplace Equation or the Heat Equation, animations, and eigenvalue problems.
+
+
+![Graph of sines and cosines forming an orthogonal set](fourier.gif)
+*Orthogonal set formed by sines and cosines[^36]*
 
 #### Rational Functions
 
 #### Binary-valued functions
 
-## Numerical Analysis
-
-## Examples
 
 ## Further Reading
-[^5]
+__Hilbert Spaces__ are inner-product complex vector spaces that is set to be a complete metric space, i.e., that any point in the space can be delimited measured[^5]
+
+__Fourier Analysis__ [^6]
+
+
 
 ## References
 [^1]: Gradimir V. Milovanovic, "Orthogonal Polynomial System and some Applications," Mathematical Institute of the Serbian Academy of Sciences and Arts, [Mathematical Institute SANU Website](http://www.mi.sanu.ac.rs/~gvm/radovi/inner.pdf), Accessed December 7, 2022.
@@ -274,7 +390,7 @@ $$\begin{split}L_0^\alpha(x)&=1\\L_1^\alpha(x)&=-x+\alpha+1\\L_2^\alpha(x)&=\fra
 
 [^16]: Ben Y. Guo, Jie Shen, Li-Lian Wang, "Generalized Jacobi polynomials/functions and their applications," Applied Numerical Mathematics, Elsevier, 2009. Accessed from [NTU Singapore Website](https://personal.ntu.edu.sg/lilian/ANUM09GenJacobi.pdf), December 7, 2022.
 
-[^17] David J. Griffiths, "Introduction to Electrodynamics: Chapter 3, Potential, Spherical coordinates," US, Pearson, 2012,
+[^17]: David J. Griffiths, "Introduction to Electrodynamics: Chapter 3, Potential, Spherical coordinates," US, Pearson, 2012,
 
 [^18]: N. Hale and A. Townsend, Fast and accurate computation of Gauss–Legendre and Gauss–Jacobi quadrature nodes and weights, SIAM J. Sci. Comput., 35 (2013), pp. A652–A674
 
@@ -290,3 +406,29 @@ Representation in Recurrent Neural Networks, " Advances in Neural Information Pr
 [^23]: By Geek3 - Own work, CC BY-SA 3.0, [link](https://commons.wikimedia.org/w/index.php?curid=9552813)
 
 [^24]: By Alessio Damato - Own work, CC BY-SA 3.0, [link](https://commons.wikimedia.org/w/index.php?curid=432441)
+
+[^25]: Hermite, C. (1864). "Sur un nouveau développement en série de fonctions" [On a new development in function series]. C. R. Acad. Sci. Paris. 58: 93–100. Collected in Œuvres II, 293–303.
+
+[^26]: Hermite, C. (1864). "Sur un nouveau développement en série de fonctions" [On a new development in function series]. C. R. Acad. Sci. Paris. 58: 93–100. Collected in Œuvres II, 293–303.
+
+[^27]: By This W3C-unspecified plot was created with Gnuplot. - Hermite_poly_solid.svg, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=6376995
+
+[^28]: Hermite polynomials. Encyclopedia of Mathematics. [URL](http://encyclopediaofmath.org/index.php?title=Hermite_polynomials&oldid=47215)
+
+[^29]: Chebyshev, P. L. (1854). "Théorie des mécanismes connus sous le nom de parallélogrammes". Mémoires des Savants étrangers présentés à l'Académie de Saint-Pétersbourg. 7: 539–586.
+
+[^30]: By WalkingRadiance - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=122398790
+
+[^31]: By Inductiveload - Own work, Public Domain, https://commons.wikimedia.org/w/index.php?curid=5836667
+
+[^32]: Burden, Richard L.; Faires, J. Douglas: Numerical Analysis, 8th ed., pages 503–512, 1993
+
+[^33]: By Glosser.ca - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=52799132
+
+[^34]: Boyd, John P. (2001). Chebyshev and Fourier Spectral Methods (PDF) (second ed.). Dover. Accessed from [archive](https://web.archive.org/web/20100331183829/http://www-personal.umich.edu/~jpboyd/aaabook_9500may00.pdf) December 7, 2022
+
+[^35]: Weisstein, Eric W. "Laguerre-Gauss Quadrature." From MathWorld--A Wolfram Web Resource. Accessed from [link](https://mathworld.wolfram.com/Laguerre-GaussQuadrature.html)
+
+[^36]: Weisstein, Eric W. "Chebyshev-Gauss Quadrature." From MathWorld--A Wolfram Web Resource. Accessed from [link](https://mathworld.wolfram.com/Chebyshev-GaussQuadrature.html)
+
+[^36]: By Lucas Vieira - Own work, Public Domain, [link](https://commons.wikimedia.org/w/index.php?curid=14733349)
