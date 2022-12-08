@@ -203,7 +203,7 @@ $$P_n(x)=\frac{1}{2^nn!}\frac{\text{d}^n}{\text{d}x^n}(1-x^2)^n$$
 
 Due to their straightforward definition, lists of the sequence of the polynomials have been computed. The first six of them are:
 
-$$\begin{split}P_0(x) &= 1 \\ P_1(x) &= x \\ P_2(x) &= \frac{1}{2}(3x^2-1) \\ P_3(x) &= \frac{1}{2}(5x^3-3x) \\ P_4(x) &= \frac{1}{8}(35x^4-30x^2+3) \\ P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x)\end{split}$$
+$$\begin{split} P_0(x) &= 1 \\ P_1(x) &= x \\ P_2(x) &= \frac{1}{2}(3x^2-1) \\ P_3(x) &= \frac{1}{2}(5x^3-3x) \\ P_4(x) &= \frac{1}{8}(35x^4-30x^2+3) \\ P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x) \end{split}$$
 
 
 <p align="center"><img src="./legendre.png" width=80% align="center"></img></p>
@@ -290,7 +290,7 @@ where $n$ is a non-negative integer. This property is important as it permits it
 
 The first three generalized Laguerre Polynomials are: 
 
-$$\begin{split}L_0^\alpha(x) &= 1\\ L_1^\alpha(x) &= -x+\alpha+1\\L_2^\alpha(x) &= \frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
+$$\begin{split}L_0^\alpha(x) &= 1 \\ L_1^\alpha(x) &= -x+\alpha+1 \\ L_2^\alpha(x) &= \frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
 
 <p align="center"><img src="./laguerre.png" style="background-color:white;" width=70% align="center"></img></p>
 <figcaption align="center"><b>Graph of the first six Laguerre Polynomials</b></figcaption>
