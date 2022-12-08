@@ -25,7 +25,7 @@ Orthogonal polynomials are used in many areas such as differential and integral 
 4. [Orthogonal Functions](#orthogonal-functions)
     1. [Orthogonal Polynomials](#orthogonal-monomials)
     2. [Legendre Polynomials](#legendre-polynomials)
-    3. [Leguerre Polynomials](#leguerre-polynomials)
+    3. [Laguerre Polynomials](#laguerre-polynomials)
     4. [Jacobi Polynomials](#jacobi-polynomials)
     5. [Other orthogonal functions](#other-orthogonal-functions)
         1. [Fourier Series](#fourier-series)
@@ -62,6 +62,8 @@ where $\vec{u}$, $\vec{v}$ and $\vec{0}$ are elements in $V$ and $a,b$, and 1 ar
 These are the axioms, i.e. the definition or _statement assumed true without proof_, of vector spaces
 Intuitively, for _geometrical_ vectors, this can be shown visually to be consistent to how vectors should behave.
 
+![Multiple forms of vectors](vector_spaces.png)*Geometric, Matrix, and Analytical representations of vector spaces[^21]*
+
 Now, if we translate this concepts to functions, these properties still apply:
 $(f+g)(x) = f(x) + g(x)$, $1f(x)=f(x)$, $a(f(x) + g(x)) = af(x) + ag(x)$, ... So, in essence, we can think of function and vectors as one and the same thing.
 
@@ -76,18 +78,15 @@ $$
     \braket{f,g} = \int^b_af(x)\,g(x)\;\text{d}{x}
 $$
 
-More generally, functions can be complex and inner products can have specific weights depending on the topology:
+More generally, functions can be complex and inner products can have specific weights depending on the topology[^2]:
 
-$$
-    \braket{f,g}_w = \int^b_af^*(x)\,g(x)\,w(x)\;\text{d}{x}
-$$
+$$\braket{f,g}_w = \int^b_af^*(x)\,g(x)\,w(x)\;\text{d}{x}$$
 
 where $f^*$ is the complex conjugate of $f$ and $w$ is the weigth of this particular inner product. Vector spaces that contain the inner product space are said to be __Inner Product Spaces__.
 
 With this definition of inner products, it is also possible to define the norm of the function for the given interval. The __Euclidean Norm__, also called $L^2$ in the literature of Hilbert Spaces, for a function $f$ is defined as:
-$$
-    \big|\big|f\big|\big|_2 = \sqrt{\braket{f,f}_2} = \sqrt{\int^b_a\big|f(x)\big|^2\;\text{d}{x}}
-$$
+
+$$\big|\big|f\big|\big|_2 = \sqrt{\braket{f,f}_2} = \sqrt{\int^b_a\big|f(x)\big|^2\;\text{d}{x}}$$
 
 A function is said to be __normalized__ if its Euclidean Norm is equal to 1.
 
@@ -107,31 +106,125 @@ $$g(x) = c_0 + c_1 x$$
 This is the equation of a line. Therefore, $g(x)$ can be any linear function or equivalently, the span of this set of basis function is the whole set of linear functions. Analyzing why this is the case, we can think of $c_0$ and $c_1$ as knobs. By only modifying $c_0$, $g(x)$ changes just in the intercept at $x=0$, but not the slope. Similarly, $c_1$ just modifies the slope, so the only linear function possible to construct with it are those that cross the origin. It is only when both can be modified is that the whole set of linear functions is attainable.
 
 This analogy can be tried again with higher powers. If we add $f_2(x) = x^2$ to the set of basis functions, then $g(x)$ becomes:
+
 $$g(x) = c_0 + c_1 x + c_2 x^2$$
+
 The new knob $c_2$ opens the possibilities for $g(x)$ to be a second order polynomial, a quadratic.
 
 By continuously adding more powers to this set, we construct what is called __Monomial Basis__. For a monomial basis with $n$ powers, the functions representable are given by the expression:
+
 $$g(x) = \sum^{n-1}_{i=0}c_ix^i$$
+
 which is just any polynomial of $n-1$ order.
 
 In the case we let the number of monomials $n\to\infty$ for this set, then we would have:
+
 $$g(x) = \sum^\infty_{i=0}c_ix^i$$
+
 However, one must be careful to note that this expression must converge for it to be true. A set of examples of this would be Taylor expansions. For the exponential function, we would have:
+
 $$g(x) = e^x = \sum^\infty_{n=0}\frac{1}{n!}x^n$$
+
 where $c_n = \frac{1}{n!}$
 
 
 ## Orthogonal Functions
 
+Orthogonality is the interesting property of vectors to be linearly independent from other vectors. In geometry, vectors are orthogonal if they are perpendicular. The case in geometry can be generalized by defining orthogonality between two vectors if they satisfy:
 
+$$\braket{\vec{u}, \vec{v}} = 0$$
+
+Again, this translates to functions seamlessly. Two function are orthogonal on the interval $[a,b]$ if[^13]:
+
+$$\braket{f_i\,,\,f_j}_w = \int^b_a\,f_i(x)\;f_j(x)w(x)\;\text{d}x = 0$$
+
+If all the functions in the basis are orthogonal to each other, then the set of function has an orthogonal basis. 
+
+When a functions in an orthogonal basis are normalized, the functions are known to be __orthonormal__ forming an __orthonormal basis__.For the management of orthonormal basis functions, it is useful to introduce the __Kronecker Delta__ function:
+
+$$\delta_{ij} = \large\begin{cases}1 & i = j\\0 & i\neq j\end{cases}$$
+
+so that the inner product of two orthonormal basis function $f_i$ and $f_j$ can be simplified to:
+
+$$\braket{f_i\,,\,f_j} = \delta_{ij}$$
+
+The usefulness of an orthogonal/orthonormal basis comes from the ability to decompose any function spanned by the basis easily. If $g(x)$ is a function in the span of the $f_i$ basis, then it can be written as:
+
+$$g(x) = \sum c_i\;f_i(x)$$
+
+Computing the inner product with a basis function $f_j$:
+
+$$\braket{f_j, g} = \sum{\braket{f_j,c_i\;f_i}} = \sum c_i \delta_{ij} = c_j$$
+
+Hence, the inner product works as a __Projector__ operator by obtaining the coefficient associated to each basis function. Another way of seeing this property is that by having an orthonormal basis, each time an inner product is done with a basis function, the amount of information obtained (the value of the coefficients) is maximized.
+
+With this properties presented, we can proceed to discuss common orthogonal functions used due to their different properties in a very diverse amount of scientific areas.
 
 ### Orthogonal Polynomials
 
+The main kind of orthogonal functions used are __Orthogonal Polynomials__. Orthogonal Polynomials are defined with respect to a specific weight and have a definite structure depending on the degree of the polynomial. The three most widely used orthogonal polynomials are the __Classical Orthogonal Polynomials__: the __Jacobi__, __Leguerre__, and __Hermite__ polynomials.[^14]
+
+### Jacobi Polynomials [^15]
+
+The Jacobi Polynomials are defined by the orthogonality relationship:
+
+$$\int^1_{-1} p_m(x)\;p_n(x)\;(1-x)^\alpha\;(1+x)^\beta\;\text{d}x = \frac{2^{\alpha+\beta+1}}{2n+\alpha+\beta+1}\frac{\Gamma(n+\alpha+1)\Gamma(n+\beta+1)}{\Gamma(n+\alpha+\beta+1)n!}\delta_{mn}$$
+
+with $\alpha,\beta>-1$. By using the Rodrigues Formula, a more explicit definition of the Jacobi Polynomials is given by the equation:
+
+$$P_n(x;\alpha;\beta) = \frac{(-1)^n}{n!2^n}(1-x)^{-\alpha}(1+x)^{-\beta}\frac{\text{d}^n}{\text{d}x^n}\left[(1-x)^\alpha(1+x)^\beta(1-x^2)^n\right]$$
+
+Some of the applications of such complex polynomials are in the use spectral methods [^16]
+
 ### Legendre Polynomials 
 
-### Leguerre Polynomials 
+Legendre Polynomials are the special case of Jacobi Polynomials when $\alpha,\beta = 0$. Therefore, they have an easier representation. The orthogonality relation is:
 
-### Jacobi Polynomials
+$$\int^1_{-1}P_m(x)\,P_n(x)\; \text{d}x = \frac{2}{2n+1}\delta_{mn}$$
+
+or in the case of its generating function:
+
+$$P_n(x)=\frac{1}{2^nn!}\frac{\text{d}^n}{\text{d}x^n}(1-x^2)^n$$
+
+Due to their straightforward definition, lists of the sequence of the polynomials have been computed. The first six of them are:
+
+$$\begin{split}P_0(x) &= 1\\P_1(x) &= x\\P_2(x) &= \frac{1}{2}(3x^2-1)\\P_3(x) &= \frac{1}{2}(5x^3-3x)\\P_4(x) &= \frac{1}{8}(35x^4-30x^2+3)\\P_5(x) &= \frac{1}{8}(63x^5-70x^3+15x)\end{split}$$
+
+![Graph of the first six Legendre Polynomials](legendre.png)*Graph of the first six Legendre Polynomials[^23]*
+
+The ease of computation facilitates the use of these polynomials all throughout many areas. They are used in Electrodynamics and Mechanics expanding potentials depending with the $1/r$ to provide a general solution to the Laplace Equation. For example, in the azimuthally symmetric separable potential, the general solution to the Laplace Equation is given by: 
+
+$$V(r,\theta) = \sum^\infty_{n=0}\left(A_nr_n+B_n/r^{n+1}\right)P_n(\cos\theta)$$
+
+where $P_n$ are the Legendre Polynomials. These also appear when solving the Schrodinger Equation for a central potential from the nucleus as a function of the alitute angle which define the electron orbitals in atoms in the form of _spherical harmonics_:
+
+$$Y_{mn}(\theta,\phi) = P^m_n(\cos\theta)\cos m\phi$$
+
+![Electron orbitals of the atom](harmonics.png)*Orbitals' shape predicted by the spherical harmonics (Legendre Polynomial)[^20]*
+
+They are used in the Gauss-Legendre Quadrature Rules for approximating definite integrals. As polynomials are easy to integrate, the weights and points for this quadrature rule are really easy to obtain compared to more general polynomials like the Jacobi Polynomials. Many of this have been computed and stored in reference tables for use when needed. While Legendre Polynomials are a solid choice for Quadratures in the majority of cases, specially for integrating polynomials, its property of computing exact integrals for polynomials will not transfer for any other type function. While inexpensive, there might be methods with better accuracy for more complex functions. [^18]
+
+Recently, they have also gained traction in their usage on Recurrent Neural Network Architectures. These neural networks orthogonalize the time history of the input data. The orthogonalization occurs with shifted Legendre Polynomials. Then these equations are ported into the memory of the neural network as matrices indexed at dsicrete moments in time. [^19]
+
+### Laguerre Polynomials [^2]
+
+Laguerre Polynomials are defined to have the weight: $w(x) = x^\alpha e^{-x}$ with $\alpha>-1$ and $x>0$. From the orthogonalization, the Laguerre polynomials can be written as the sequence:
+
+$$L^\alpha_n(x)=\sum^n_{k=0}\frac{\Gamma(\alpha+n+1)}{\Gamma(\alpha+k+1)}\frac{(-x)^k}{k!(n-k)!}$$
+
+They satisfy the differential equation: 
+$$xy''+(\alpha-x+1)y'+ny=0$$
+where $n$ is a non-negative integer. This property is important as it permits it to be written as a _confluent hypergeometric function_, which are functions where the singularities are merged into one. Real world use cases for this were in the solution of the Schordinger Equation for the Couloumb Potential and Morse potential. [^22]
+
+The first three generalized Laguerre Polynomials are: 
+
+$$\begin{split}L_0^\alpha(x)&=1\\L_1^\alpha(x)&=-x+\alpha+1\\L_2^\alpha(x)&=\frac{x^2}{2}-(\alpha + 2)x+\frac{(\alpha+1)(\alpha+2)}{2}\end{split}$$
+
+![Graph of first six Laguerre Polynomials](laguerre.png)*Graph of the first six Laguerre Polynomials[^24]*
+
+### Hermite Polynomials
+
+
 
 ### Other orthogonal functions
 
@@ -146,6 +239,7 @@ where $c_n = \frac{1}{n!}$
 ## Examples
 
 ## Further Reading
+[^5]
 
 ## References
 [^1]: Gradimir V. Milovanovic, "Orthogonal Polynomial System and some Applications," Mathematical Institute of the Serbian Academy of Sciences and Arts, [Mathematical Institute SANU Website](http://www.mi.sanu.ac.rs/~gvm/radovi/inner.pdf), Accessed December 7, 2022.
@@ -171,3 +265,28 @@ where $c_n = \frac{1}{n!}$
 [^11]: Schmidt, E. Über die Auflösung linearer Gleichungen mit Unendlich vielen unbekannten. Rend. Circ. Matem. Palermo 25, 53–77 (1908). https://doi.org/10.1007/BF03029116
 
 [^12]: Roman Steven, "Advanced Linear Algebra, Vector Spaces", Chapter 1, New York, Springer, 2005.
+
+[^13]: Barile, Margherita. "Orthogonal." From MathWorld--A Wolfram Web Resource, created by Eric W. Weisstein. [Wolfram Website](https://mathworld.wolfram.com/Orthogonal.html) Accessed December 7, 2022.
+
+[^14]: Classical orthogonal polynomials. Encyclopedia of Mathematics. [URL](http://encyclopediaofmath.org/index.php?title=Classical_orthogonal_polynomials&oldid=51225), Accessed December 7, 2022.
+
+[^15]: Jacobi polynomials. Encyclopedia of Mathematics. [URL](http://encyclopediaofmath.org/index.php?title=Jacobi_polynomials&oldid=47459)
+
+[^16]: Ben Y. Guo, Jie Shen, Li-Lian Wang, "Generalized Jacobi polynomials/functions and their applications," Applied Numerical Mathematics, Elsevier, 2009. Accessed from [NTU Singapore Website](https://personal.ntu.edu.sg/lilian/ANUM09GenJacobi.pdf), December 7, 2022.
+
+[^17] David J. Griffiths, "Introduction to Electrodynamics: Chapter 3, Potential, Spherical coordinates," US, Pearson, 2012,
+
+[^18]: N. Hale and A. Townsend, Fast and accurate computation of Gauss–Legendre and Gauss–Jacobi quadrature nodes and weights, SIAM J. Sci. Comput., 35 (2013), pp. A652–A674
+
+[^19]: Aaron R. Voelker, Ivana Kajic, Chris Eliasmith, "Legendre Memory Units: Continuous-Time
+Representation in Recurrent Neural Networks, " Advances in Neural Information Processing Systems, Canada, 2019. Accessed from [Waterloo Website](http://compneuro.uwaterloo.ca/files/publications/voelker.2019.lmu.pdf)
+
+[^20]: Legendre Polynomials and Applications, Florida International University. Accessed from [link](https://faculty.fiu.edu/~meziani/Note13.pdf), December 7, 2022
+
+[^21]: 3Blue1Brown, "Abstract Vector Spaces," Youtube, Accessed from [link](https://www.youtube.com/watch?v=TgKwz5Ikpc8), December 7, 2022
+
+[^22]: John S. Townsend, "A Modern Approach to Quantum Mechanics, " University Science Books, 2012.
+
+[^23]: By Geek3 - Own work, CC BY-SA 3.0, [link](https://commons.wikimedia.org/w/index.php?curid=9552813)
+
+[^24]: By Alessio Damato - Own work, CC BY-SA 3.0, [link](https://commons.wikimedia.org/w/index.php?curid=432441)
